@@ -8,6 +8,11 @@ from app.schemas.tasks import STaskAdd, STaskUpdate
 
 
 class TaskRepository:
+    """
+    Класс для работы с базой данных
+
+    Взаимодействует напрямую с бд, делает весь CRUD
+    """
     def __init__(self, db: Session) -> None:
         self.db = db
 
