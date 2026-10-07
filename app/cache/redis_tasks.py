@@ -1,8 +1,8 @@
-# app/cache/rediscache.py
+# app/cache/redis_tasks.py
 from redis import Redis
 import json
 
-class RedisCache:
+class RedisCacheTasks:
 
     def __init__(self, redis_url: str, cache_ttl_seconds: int | None = None) -> None:
         self.redis = Redis.from_url(redis_url, decode_responses=True)

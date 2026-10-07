@@ -1,8 +1,8 @@
-# services/service
+# services/task_service.py
 from sqlalchemy.orm import Session
 
-from app.cache.rediscache import RedisCache
-from app.repositories.repository import TaskRepository
+from app.cache.redis_tasks import RedisCacheTasks
+from app.repositories.task_repository import TaskRepository
 from app.models.tasks import TasksModel
 from app.schemas.tasks import STaskRead, STaskAdd, STaskUpdate
 from app.core.config import get_settings
@@ -17,7 +17,7 @@ class TaskService:
     """
     def __init__(self, db: Session) -> None:
         self.db = db
-        self.cache = RedisCache(settings.redis_url, settings.cache_ttl_seconds)
+        self.cache = RedisCacheTasks(settings.redis_url, settings.cache_ttl_seconds)
         self.task_repository = TaskRepository(db)
 
     def list_tasks(self) -> list[STaskRead]:
