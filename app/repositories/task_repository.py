@@ -1,17 +1,21 @@
-# repositories/repository.py
+# repositories/task_repository.py
 from sqlalchemy.orm import Session
 from sqlalchemy import select, delete
-from typing import Sequence
 
 from app.models.tasks import TasksModel
 from app.schemas.tasks import STaskAdd, STaskUpdate
 
 
 class TaskRepository:
+    """
+    Класс для работы с базой данных
+
+    Взаимодействует напрямую с бд, делает весь CRUD
+    """
     def __init__(self, db: Session) -> None:
         self.db = db
 
-    def select_tasks(self) -> Sequence[TasksModel]:
+    def select_tasks(self) -> list[TasksModel]:
         query = select(TasksModel)
         tasks = self.db.execute(query)
         return tasks.scalars().all()

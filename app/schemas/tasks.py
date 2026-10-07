@@ -2,7 +2,7 @@
 from pydantic import BaseModel, ConfigDict, Field
 
 class STaskBase(BaseModel):
-    title: str | None = Field(default=None, min_length=1)
+    pass
 
 class STaskRead(STaskBase):
     id: str
@@ -15,4 +15,5 @@ class STaskAdd(STaskBase):
     title: str = Field(min_length=1)
 
 class STaskUpdate(STaskBase):
+    title: str | None = Field(default=None, min_length=1)
     completed: bool | None = None
