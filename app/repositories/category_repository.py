@@ -31,5 +31,5 @@ class CategoryRepository:
         return self.db.get(CategoriesModel, category_id)
 
     def delete_category(self, category_id: str) -> None:
-        query = delete(CategoriesModel).where(CategoriesModel.id == category_id)
-        self.db.execute(query)
+        stmt = delete(CategoriesModel).where(CategoriesModel.id == category_id)
+        self.db.execute(stmt)
