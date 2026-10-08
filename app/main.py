@@ -4,10 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routers.task import router_tasks
 from app.api.routers.category import router_categories
-from app.databases.database import lifespan
 from app.core.config import get_settings
-
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 settings = get_settings()
 
 app.add_middleware(CORSMiddleware,
